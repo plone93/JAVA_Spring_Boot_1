@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>ユーザー情報検索</title>
+    <link href="/css/BoardList.css" rel="stylesheet"></link>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>ユーザー情報検索</h1>
+    <form th:action="@{/user/id_search}" th:object="${userSearchRequest}" th:method="post">
+      <div>ID：<input type="text" name="id" size="40"/></div><br />
+      <div><input type="submit" value="検索" style="width:100px;" /></div><br />
+    </form>
+    <div th:if="${boardList}">
+      <table th:object="${boardList}">
+      <tr>
+        <th class="cell_title">名前</th>
+        <td th:text="*{goods_cd}"></td>
+      </tr>
+      <tr>
+        <th class="cell_title">住所</th>
+        <td th:text="*{goods_name}"></td>
+      </tr>
+      <tr>
+        <th class="cell_title">電話番号</th>
+        <td th:text="*{unit_price}"></td>
+      </tr>
+    </table>
+    </div>
+  </body>
 </html>

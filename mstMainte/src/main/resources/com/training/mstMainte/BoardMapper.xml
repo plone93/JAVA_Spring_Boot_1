@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="com.training.mstMainte.Mapper.BoardMapper">
+	<select id="BoardSelect" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods;
+	</select>
+	
+	<select id="BoardView" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_cd = #{boardVO.goods_cd}
+	</select>
+	
+	<insert id="BoardInsert">
+		insert into mst_goods(goods_cd, goods_name, unit_price)
+		values(#{boardVO.goods_cd}, #{boardVO.goods_name}, #{boardVO.unit_price})
+	</insert>
+	
+	<update id="BoardUpdate">
+		update mst_goods set 
+		goods_cd = #{boardVO.goods_cd}
+		goods_name = #{boardVO.goods_name}
+		unit_price = #{boardVO.unit_price}
+		where goods_cd = #{boardVO.goods_cd}
+	</update>
+	
+	<delete id="BoardDelete">
+		delete from mst_goods
+		where goods_cd = #{boardVO.goods_cd}
+	</delete>
+	
+	<select id="BoardData" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_cd = #{boardVO.goods_cd}
+	</select>
+</mapper>
