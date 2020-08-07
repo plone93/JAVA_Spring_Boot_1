@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>ユーザー情報検索</title>
+    <title>상품정보 편집</title>
     <link href="/css/BoardList.css" rel="stylesheet"></link>
     <meta charset="utf-8" />
   </head>
@@ -11,21 +11,28 @@
       <div>ID：<input type="text" name="id" size="40"/></div><br />
       <div><input type="submit" value="検索" style="width:100px;" /></div><br />
     </form>
-    <div th:if="${boardList}">
-      <table th:object="${boardList}">
-      <tr>
-        <th class="cell_title">名前</th>
-        <td th:text="*{goods_cd}"></td>
-      </tr>
-      <tr>
-        <th class="cell_title">住所</th>
-        <td th:text="*{goods_name}"></td>
-      </tr>
-      <tr>
-        <th class="cell_title">電話番号</th>
-        <td th:text="*{unit_price}"></td>
-      </tr>
+    
+    <div th:each="board : ${boardList}"><!-- if boardList가 있다면 -->
+      <table><!-- 객체설정 -->
+	      <tr>
+	     	 <th style="width:400px; height:30px;">상품코드</th>
+	     	 <th style="width:400px; height:30px;">상품명</th>
+	     	 <th style="width:400px; height:30px;">상품가격</th>
+	     	 <th style="width:400px; height:30px;">등록일</th>
+	     	 <th style="width:400px; height:30px;">갱신일</th>
+	     	 <th style="width:400px; height:30px;">편집</th>
+	      </tr>
+	      
+	      <tr>
+	        <td th:text="${board.goods_cd}"></td><!-- 객체의 필드값  -->
+	        <td th:text="${board.goods_name}"></td><!-- 객체의 필드값  -->
+	        <td th:text="${board.unit_price}"></td><!-- 객체의 필드값  -->
+	        <td th:text="${board.entry_tsp}"></td><!-- 객체의 필드값  -->
+	        <td th:text="${board.update_tsp}"></td><!-- 객체의 필드값  -->
+	        <td><a href="BoardUpdate?goods_cd=${board.goods_cd}"></a></td>
+	      </tr>
     </table>
     </div>
+    
   </body>
 </html>

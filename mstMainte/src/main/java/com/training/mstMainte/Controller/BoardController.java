@@ -25,6 +25,8 @@ public class BoardController {
 		String url = "/Board/BoardList";
 		
 		List<BoardVO> boardList = board.BoardSelect();
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println(boardList);
 		model.addAttribute("boardList", boardList);
 		
 		return url;
@@ -47,8 +49,12 @@ public class BoardController {
 	
 	/*編集*/
 	@RequestMapping(value = "/Board/BoardUpdate", method = RequestMethod.GET)
-	public String BoardUpdate() {
+	public String BoardUpdate(BoardVO boardVO,
+							  Model model) {
 		String url = "Board/BoardUpdate";
+		
+		boardVO = board.BoardData(boardVO);
+		model.addAttribute("boardVO", boardVO);
 		
 		return url;
 	}

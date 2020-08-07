@@ -1,5 +1,6 @@
 package com.training.mstMainte.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> BoardSelect() {
+	//	HashMap<String, Object> map = new HashMap<String, Object>();
 		return board.BoardSelect();
 	}
 
