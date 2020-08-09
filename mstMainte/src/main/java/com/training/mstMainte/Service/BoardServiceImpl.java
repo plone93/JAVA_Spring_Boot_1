@@ -1,6 +1,5 @@
 package com.training.mstMainte.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO BoardData(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return board.BoardData(boardVO);
 	}
 
 	@Override

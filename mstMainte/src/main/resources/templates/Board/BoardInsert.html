@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>상품정보입력</title>
+    <link href="/css/list.css" rel="stylesheet"></link>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+	
+	<form method="POST" th:object="${}" th:action="@{}">
+		<div>
+			<input name="goods_cd" value="${boardVO.goods_cd}">
+		</div>
+		<div>
+			<input type="text" name="goods_name" value="${boardVO.goods_name}">
+		</div>
+		<div>
+			<input type="text" name="unit_price" value="${boardVO.unit_price}">
+		</div>
+	
+	</form>
+	
+  </body>
 </html>
