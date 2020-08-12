@@ -6,20 +6,37 @@
     <meta charset="utf-8" />
   </head>
   <body>
+	<h1>상품정보 검색</h1>
 	
-	<form method="POST" th:object="${boardVO}" th:action="@{BoardList}">
+	<form method="POST" th:object="${boardVO}" th:action="@{BoardUpdated}">
 	<!-- th:object 해당 태그내에서 사용할 객체 선언, 태그 안에서 *{}안에 필드명을 입력-->
 		<div>
-			<input name="goods_cd" th:field="*{goods_cd}">
+		<table>
+			<thead>
+		      <tr>
+		      	<th style="width:400px; height:30px;">상품코드</th>
+		     	<th style="width:400px; height:30px;">상품명</th>
+		     	<th style="width:400px; height:30px;">상품가격</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<tr>
+		    	 <th><input name="goods_cd" th:field="*{goods_cd}"></th>
+		    	 <th><input type="text" name="goods_name" th:field="*{goods_name}"></th>
+		    	 <th><input type="text" name="unit_price" th:field="*{unit_price}"></th>
+		    </tbody>
+		    
+	    </table>  
 		</div>
+		
 		<div>
-			<input type="text" name="goods_name" th:field="*{goods_name}">
+			<button type="submit" style="width:100px;">수정완료</button>
+			<button type="button" th:onclick="@{BoardDelete(goods_cd=*{goods_cd})}">삭제</button>
+			<a th:href="@{BoardDelete(goods_cd=*{goods_cd})}">삭제</a>
+			<button type="submit" style="width:100px;">취소</button>
 		</div>
-		<div>
-			<input type="text" name="unit_price" th:field="*{unit_price}">
-		</div>
-	
 	</form>
 	
   </body>
+
 </html>

@@ -29,6 +29,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	compile 'org.webjars:jquery:3.5.1'
 }
 
 test {

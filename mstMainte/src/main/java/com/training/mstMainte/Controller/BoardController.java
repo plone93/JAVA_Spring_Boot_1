@@ -40,10 +40,10 @@ public class BoardController {
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardInsert", method = RequestMethod.POST)
+	@RequestMapping(value = "/Board/BoardInserted", method = RequestMethod.POST)
 	public String BoardInserted(BoardVO boardVO) {
 		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		
+		board.BoardInsert(boardVO);
 		return url;
 	}
 	
@@ -62,15 +62,16 @@ public class BoardController {
 	@RequestMapping(value = "/Board/BoardUpdated", method = RequestMethod.POST)
 	public String BoardUpdated(BoardVO boardVO) {
 		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		
+		board.BoardUpdate(boardVO);//수정시 날짜 갱신 필요
 		return url;
 	}
 	
 	/*削除*/
 	@RequestMapping(value = "/Board/BoardDelete", method = RequestMethod.GET)
-	public String BoardDelete() {
+	public String BoardDelete(BoardVO boardVO) {
 		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		
+		System.out.println("삭제 : "+boardVO.getGoods_cd());
+		board.BoardDelete(boardVO);
 		return url;
 	}
 }

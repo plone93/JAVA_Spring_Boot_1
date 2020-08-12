@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>상품정보 편집</title>
+    <title>상품정보</title>
     <link href="/css/BoardList.css" rel="stylesheet"></link>
     <meta charset="utf-8" />
   </head>
   <body>
-    <h1>ユーザー情報検索</h1>
-    <form th:action="@{/user/id_search}" th:object="${userSearchRequest}" th:method="post">
-      <div>ID：<input type="text" name="id" size="40"/></div><br />
-      <div><input type="submit" value="検索" style="width:100px;" /></div><br />
+    <h1>상품정보 검색</h1>
+    <form th:action="@{/user/id_search}" th:object="${userSearchRequest}" method="post">
+      <div>ID：<input type="text" name="id" size="40"/></div>
+      <br/>
+      <button type="submit" style="width:100px;">검색</button>
+      <br/>
     </form>
+    
+    <button type="button" th:onclick="location.href='BoardInsert'">작성</button>
+    
     
     <div>
       <table><!-- 객체설정 -->
@@ -41,6 +46,6 @@
 	</tbody>
     </table>
     </div>
-    
+
   </body>
 </html>

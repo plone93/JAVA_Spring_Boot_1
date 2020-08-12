@@ -13,15 +13,16 @@
 	</select>
 	
 	<insert id="BoardInsert">
-		insert into mst_goods(goods_cd, goods_name, unit_price)
-		values(#{goods_cd}, #{goods_name}, #{unit_price})
+		insert into mst_goods(goods_cd, goods_name, unit_price, entry_tsp, update_tsp)
+		values(#{goods_cd}, #{goods_name}, #{unit_price}, now(), now())
 	</insert>
 	
 	<update id="BoardUpdate">
 		update mst_goods set 
-		goods_cd = #{goods_cd}
-		goods_name = #{goods_name}
-		unit_price = #{unit_price}
+		goods_cd = #{goods_cd},
+		goods_name = #{goods_name},
+		unit_price = #{unit_price},
+		update_tsp = now()
 		where goods_cd = #{goods_cd}
 	</update>
 	
