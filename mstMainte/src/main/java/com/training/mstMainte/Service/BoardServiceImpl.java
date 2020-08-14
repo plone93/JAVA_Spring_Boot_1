@@ -46,4 +46,29 @@ public class BoardServiceImpl implements BoardService{
 		return null;
 	}
 
+	@Override
+	public int GoodsNumberCheck(String goods_number) {
+		return board.GoodsNumberCheck(goods_number);
+	}
+
+	@Override
+	public List<BoardVO> BoardSearch(String keyword) {
+		return board.BoardSearch(keyword);
+	}
+
+	@Override
+	public List<BoardVO> boardSelect_Dress(BoardVO boardVO) {
+		return board.boardSelect_Dress(boardVO);
+	}
+
+	@Override
+	public List<BoardVO> boardSelect_Eat(BoardVO boardVO) {
+		return board.boardSelect_Eat(boardVO);
+	}
+
+	@Override
+	public List<BoardVO> boardSelect_ETC(BoardVO boardVO) {
+		return board.boardSelect_ETC(boardVO);
+	}
+
 }

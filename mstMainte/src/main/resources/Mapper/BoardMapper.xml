@@ -7,32 +7,57 @@
 		select * from mst_goods;
 	</select>
 	
+	<select id="BoardSearch" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_number = #{keyword}
+	</select>
+	
 	<select id="BoardView" resultType="com.training.mstMainte.Entity.BoardVO">
 		select * from mst_goods
-		where goods_cd = #{ goods_cd}
+		where goods_number = #{goods_number}
 	</select>
 	
 	<insert id="BoardInsert">
-		insert into mst_goods(goods_cd, goods_name, unit_price, entry_tsp, update_tsp)
-		values(#{goods_cd}, #{goods_name}, #{unit_price}, now(), now())
+		insert into mst_goods(goods_number, goods_name, goods_id, goods_price, insert_date, update_date)
+		values(#{goods_number}, #{goods_name}, #{goods_id},#{goods_price}, now(), now())
 	</insert>
 	
 	<update id="BoardUpdate">
 		update mst_goods set 
-		goods_cd = #{goods_cd},
+		goods_number = #{goods_number},
 		goods_name = #{goods_name},
-		unit_price = #{unit_price},
-		update_tsp = now()
-		where goods_cd = #{goods_cd}
+		goods_price = #{goods_price},
+		insert_date = now()
+		where goods_number = #{goods_number}
 	</update>
 	
 	<delete id="BoardDelete">
 		delete from mst_goods
-		where goods_cd = #{goods_cd}
+		where goods_number = #{goods_number}
 	</delete>
 	
 	<select id="BoardData" resultType="com.training.mstMainte.Entity.BoardVO">
 		select * from mst_goods
-		where goods_cd = #{goods_cd}
+		where goods_number = #{goods_number}
+	</select>
+	
+	<select id="GoodsNumberCheck" resultType="int">
+		select count(*) from mst_goods
+		where goods_number = #{goods_number}
+	</select>
+	
+	<select id="boardSelect_Dress" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_id = #{goods_id}
+	</select>
+	
+	<select id="boardSelect_Eat" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_id = #{goods_id}
+	</select>
+	
+	<select id="boardSelect_ETC" resultType="com.training.mstMainte.Entity.BoardVO">
+		select * from mst_goods
+		where goods_id = #{goods_id}
 	</select>
 </mapper>

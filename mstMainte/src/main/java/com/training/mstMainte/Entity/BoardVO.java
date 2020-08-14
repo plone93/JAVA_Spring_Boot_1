@@ -6,10 +6,12 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	private String goods_cd; //상품코드
+	private String goods_number; //상품코드
 	private String goods_name; //상품명
-	private int unit_price;  //단가
-	private Timestamp entry_tsp; //등록일자
-	private Timestamp update_tsp; //갱신일자
+	private String goods_id; //상품 아이디(구분)
+	private int goods_price;  //단가
+	private int goods_cost;//원가
+	private Timestamp insert_date; //등록일자
+	private Timestamp update_date; //갱신일자
 	
 }

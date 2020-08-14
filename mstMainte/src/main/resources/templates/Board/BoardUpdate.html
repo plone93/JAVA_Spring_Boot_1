@@ -4,38 +4,62 @@
     <title>상품정보수정</title>
     <link href="/css/list.css" rel="stylesheet"></link>
     <meta charset="utf-8" />
+    
+   	<!-- 제이쿼리 -->
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+	
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-	<h1>상품정보 검색</h1>
+  
+    <div class="container">
+	<h1>상품작성</h1>
 	
-	<form method="POST" th:object="${boardVO}" th:action="@{BoardUpdated}">
+	<form method="POST" th:object="${boardVO}" th:action="@{BoardUpdated}" name="form" onsubmit="return InsertCheck()">
 	<!-- th:object 해당 태그내에서 사용할 객체 선언, 태그 안에서 *{}안에 필드명을 입력-->
-		<div>
-		<table>
-			<thead>
-		      <tr>
-		      	<th style="width:400px; height:30px;">상품코드</th>
-		     	<th style="width:400px; height:30px;">상품명</th>
-		     	<th style="width:400px; height:30px;">상품가격</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		    	<tr>
-		    	 <th><input name="goods_cd" th:field="*{goods_cd}"></th>
-		    	 <th><input type="text" name="goods_name" th:field="*{goods_name}"></th>
-		    	 <th><input type="text" name="unit_price" th:field="*{unit_price}"></th>
-		    </tbody>
-		    
-	    </table>  
-		</div>
+		
+		<div class="row my-3 pl-5">
+       	  <div class="col-3">
+       		 <label for="code">상품코드</label>
+      	  </div>
+       	  <div class="col-6">
+       		 <input type="text" class="form-control" name="goods_number" id="goods_number" th:field="*{goods_number}">
+          </div>
+        </div>
+
+		<div class="row my-3 pl-5">
+       	  <div class="col-3">
+       		 <label for="ID">상품이름</label>
+      	  </div>
+       	  <div class="col-6">
+       		 <input type="text" class="form-control" name="goods_name" id="goods_name" th:field="*{goods_name}" placeholder="">
+          </div>
+        </div>
+        		
+		<div class="row my-3 pl-5">
+       	  <div class="col-3">
+       		 <label for="ID">상품가격</label>
+      	  </div>
+       	  <div class="col-6">
+       		 <input type="text" class="form-control" name="goods_price" id="goods_price" th:field="*{goods_price}" placeholder="">
+          </div>
+        </div>
 		
 		<div>
-			<button type="submit" style="width:100px;">수정완료</button>
-			<button type="button" th:onclick="@{BoardDelete(goods_cd=*{goods_cd})}">삭제</button>
-			<a th:href="@{BoardDelete(goods_cd=*{goods_cd})}">삭제</a>
-			<button type="submit" style="width:100px;">취소</button>
+			<button type="submit" class="btn btn-default navbar-btn">수정완료</button>
+			<a  class="btn btn-default navbar-btn" th:href="@{BoardDelete(goods_number=*{goods_number})}">삭제</a>
+			<button type="submit" class="btn btn-default navbar-btn">취소</button>
 		</div>
 	</form>
+	
+	</div>
 	
   </body>
 
