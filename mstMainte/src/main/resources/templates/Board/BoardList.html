@@ -20,27 +20,27 @@
   
   <body>
     <div class="container">
-    <h1>상품정보 검색</h1>
+    <h1>商品情報</h1>
     
     <form class="navbar-form navbar-left" role="search" th:action="@{BoardSearch}" method="post">
 	  <div class="form-group">
 	    <input type="text" class="form-control" name="keyword" placeholder="Search">
 	  </div>
-	  <button type="submit" class="btn btn-default">검색</button>
+	  <button type="submit" class="btn btn-default">検索</button>
 	</form>
         
-    <button type="button" class="btn btn-default navbar-btn" th:onclick="location.href='BoardInsert'">작성</button>
+    <button type="button" class="btn btn-default navbar-btn" th:onclick="location.href='BoardInsert'">作成</button>
     
     
 	<!-- Single button 드롭다운 버튼-->
 	<div class="btn-group">
 	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  	   분류 <span class="caret"></span>
+	  	   分類 <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu" role="menu">
-	    <li><a th:href="@{BoardList_Dress}">의류</a></li>
-	    <li><a th:href="@{BoardList_Eat}">식품</a></li>
-	    <li><a th:href="@{BoardList_ETC}">기타</a></li>
+	    <li><a th:href="@{BoardList_Dress}">衣類</a></li>
+	    <li><a th:href="@{BoardList_Eat}">食品</a></li>
+	    <li><a th:href="@{BoardList_ETC}">他</a></li>
 	  </ul>
 	</div>
 	
@@ -49,13 +49,13 @@
       <table class="table">
       <thead>
 	      <tr>
-	     	 <th>상품코드</th>
-	     	 <th>분류</th>
-	     	 <th>상품명</th>
-	     	 <th>상품가격</th>
-	     	 <th>등록일</th>
-	     	 <th>갱신일</th>
-	     	 <th>편집</th>
+	     	 <th>商品コード</th>
+	     	 <th>分類</th>
+	     	 <th>商品名</th>
+	     	 <th>商品価格</th>
+	     	 <th>登録日</th>
+	     	 <th>更新日</th>
+	     	 <th>編集</th>
 	      </tr>
 	  </thead>   
 	  
@@ -65,9 +65,9 @@
 	        <td th:text="${board.goods_id}"></td><!-- 객체의 필드값  -->
 	        <td th:text="${board.goods_name}"></td><!-- 객체의 필드값  -->
 	        <td th:text="${board.goods_price}"></td><!-- 객체의 필드값  -->
-	        <td th:text="${board.insert_date}"></td><!-- 객체의 필드값  -->
-	        <td th:text="${board.update_date}"></td><!-- 객체의 필드값  -->
-	        <td><a th:href="@{BoardUpdate(goods_number=${board.goods_number})}">편집</a></td>
+	        <td th:text="${#dates.format(board.insert_date, 'yyyy-MM-dd HH:mm:ss')}"></td><!-- 객체의 필드값  -->
+	        <td th:text="${#dates.format(board.update_date, 'yyyy-MM-dd HH:mm:ss')}"></td><!-- 객체의 필드값  -->
+	        <td><a th:href="@{BoardUpdate(goods_number=${board.goods_number})}" class="btn btn-default navbar-btn">修正</a></td>
 	        <!-- 
 	          <td><a th:href="BoardUpdate?goods_cd=${board.goods_cd}">편집</a></td>
 	           <a th:href="@{/order/details(id=1, action='show_all')}"></a>

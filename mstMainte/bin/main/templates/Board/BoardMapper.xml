@@ -9,16 +9,16 @@
 	
 	<select id="BoardSearch" resultType="com.training.mstMainte.Entity.BoardVO">
 		select * from mst_goods
-		where goods_number = #{keyword}
+		where "goodsNumber" = #{keyword}
 	</select>
 	
 	<select id="BoardView" resultType="com.training.mstMainte.Entity.BoardVO">
 		select * from mst_goods
-		where goods_number = #{goods_number}
+		where "goodsNumber" = #{goods_number}
 	</select>
 	
 	<insert id="BoardInsert">
-		insert into mst_goods(goods_number, goods_name, goods_id, goods_price, insert_date, update_date)
+		insert into mst_goods("goodsNumber", goods_name, goods_id, goods_price, insert_date, update_date)
 		values(#{goods_number}, #{goods_name}, #{goods_id},#{goods_price}, now(), now())
 	</insert>
 	
@@ -27,7 +27,7 @@
 		goods_number = #{goods_number},
 		goods_name = #{goods_name},
 		goods_price = #{goods_price},
-		update_date = now()
+		insert_date = now()
 		where goods_number = #{goods_number}
 	</update>
 	

@@ -19,7 +19,7 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService board;
-	
+
 	
 	@RequestMapping(value = "/Board/BoardList", method = RequestMethod.GET)
 	public String BoardList(BoardVO boardVO,
@@ -36,7 +36,7 @@ public class BoardController {
 	public String boardList_Dress(BoardVO boardVO,
 							Model model) {
 		String url = "/Board/BoardList";
-		String goods_id = "의류";
+		String goods_id = "衣類";
 		
 		boardVO.setGoods_id(goods_id);
 		List<BoardVO> boardList = board.boardSelect_Dress(boardVO);
@@ -49,7 +49,7 @@ public class BoardController {
 	public String boardList_Eat(BoardVO boardVO,
 							Model model) {
 		String url = "/Board/BoardList";
-		String goods_id = "식품";
+		String goods_id = "食品";
 		
 		boardVO.setGoods_id(goods_id);
 		List<BoardVO> boardList = board.boardSelect_Eat(boardVO);
@@ -62,7 +62,7 @@ public class BoardController {
 	public String boardList_ETC(BoardVO boardVO,
 							Model model) {
 		String url = "/Board/BoardList";
-		String goods_id = "기타";
+		String goods_id = "他";
 		
 		boardVO.setGoods_id(goods_id);
 		List<BoardVO> boardList = board.boardSelect_ETC(boardVO);

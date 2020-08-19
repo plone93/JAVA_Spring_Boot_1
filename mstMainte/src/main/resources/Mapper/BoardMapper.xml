@@ -27,7 +27,7 @@
 		goods_number = #{goods_number},
 		goods_name = #{goods_name},
 		goods_price = #{goods_price},
-		insert_date = now()
+		update_date = now()
 		where goods_number = #{goods_number}
 	</update>
 	
