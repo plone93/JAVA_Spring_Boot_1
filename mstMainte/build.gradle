@@ -30,6 +30,9 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile 'org.webjars:jquery:3.5.1'
+	//compile('javax.servlet:jstl')  jsp처리를 위한 코드  jstl 문법
+	//compile("org.apache.tomcat.embed:tomcat-embed-jasper") jsp처리를 위한코드  스프링부트의 톰캣서버는 jsp를 지원안하기 때문에 
+
 }
 
 test {

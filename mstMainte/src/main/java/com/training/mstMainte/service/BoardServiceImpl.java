@@ -1,12 +1,12 @@
-package com.training.mstMainte.Service;
+package com.training.mstMainte.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.training.mstMainte.Entity.BoardVO;
-import com.training.mstMainte.Mapper.BoardMapper;
+import com.training.mstMainte.entity.BoardVO;
+import com.training.mstMainte.mapper.BoardMapper;
 
 @Service
 public class BoardServiceImpl implements BoardService{

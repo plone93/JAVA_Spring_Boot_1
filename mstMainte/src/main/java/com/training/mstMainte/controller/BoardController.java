@@ -1,4 +1,4 @@
-package com.training.mstMainte.Controller;
+package com.training.mstMainte.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.training.mstMainte.Entity.BoardVO;
-import com.training.mstMainte.Service.BoardService;
+import com.training.mstMainte.entity.BoardVO;
+import com.training.mstMainte.service.BoardService;
 
 
 @Controller

@@ -1,10 +1,10 @@
-package com.training.mstMainte.Mapper;
+package com.training.mstMainte.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.training.mstMainte.Entity.BoardVO;
+import com.training.mstMainte.entity.BoardVO;
 
 
 @Mapper

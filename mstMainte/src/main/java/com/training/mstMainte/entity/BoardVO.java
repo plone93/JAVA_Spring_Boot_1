@@ -1,4 +1,4 @@
-package com.training.mstMainte.Entity;
+package com.training.mstMainte.entity;
 
 import java.sql.Timestamp;
 

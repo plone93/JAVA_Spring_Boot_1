@@ -1,8 +1,8 @@
-package com.training.mstMainte.Service;
+package com.training.mstMainte.service;
 
 import java.util.List;
 
-import com.training.mstMainte.Entity.BoardVO;
+import com.training.mstMainte.entity.BoardVO;
 
 
 public interface BoardService {
