@@ -15,111 +15,112 @@ import com.training.mstMainte.service.BoardService;
 
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 	
 	@Autowired
-	private BoardService board;
+	private BoardService boardService;
 
 	
-	@RequestMapping(value = "/Board/BoardList", method = RequestMethod.GET)
-	public String BoardList(BoardVO boardVO,
+	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+	public String boardList(BoardVO boardVO,
 							Model model) {
-		String url = "/Board/BoardList";
+		String url = "/board_list";
 		
-		List<BoardVO> boardList = board.BoardSelect();
+		List<BoardVO> boardList = boardService.selectBoard();
 		model.addAttribute("boardList", boardList);
 		
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardList_Dress", method = RequestMethod.GET)
-	public String boardList_Dress(BoardVO boardVO,
+	@RequestMapping(value = "/boardListDress", method = RequestMethod.GET)
+	public String boardListDress(BoardVO boardVO,
 							Model model) {
-		String url = "/Board/BoardList";
+		String url = "/board_list";
 		String goods_id = "衣類";
 		
 		boardVO.setGoods_id(goods_id);
-		List<BoardVO> boardList = board.boardSelect_Dress(boardVO);
+		List<BoardVO> boardList = boardService.selectBoardDress(boardVO);
 		model.addAttribute("boardList", boardList);
 		
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardList_Eat", method = RequestMethod.GET)
-	public String boardList_Eat(BoardVO boardVO,
+	@RequestMapping(value = "/boardListEat", method = RequestMethod.GET)
+	public String boardListEat(BoardVO boardVO,
 							Model model) {
-		String url = "/Board/BoardList";
+		String url = "/board_list";
 		String goods_id = "食品";
 		
 		boardVO.setGoods_id(goods_id);
-		List<BoardVO> boardList = board.boardSelect_Eat(boardVO);
+		List<BoardVO> boardList = boardService.selectBoardEat(boardVO);
 		model.addAttribute("boardList", boardList);
 		
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardList_ETC", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardListEtc", method = RequestMethod.GET)
 	public String boardList_ETC(BoardVO boardVO,
 							Model model) {
-		String url = "/Board/BoardList";
+		String url = "/board_list";
 		String goods_id = "他";
 		
 		boardVO.setGoods_id(goods_id);
-		List<BoardVO> boardList = board.boardSelect_ETC(boardVO);
+		List<BoardVO> boardList = boardService.selectBoardEtc(boardVO);
 		model.addAttribute("boardList", boardList);
 		
 		return url;
 	}
 	
 	/*作成*/
-	@RequestMapping(value = "/Board/BoardInsert", method = RequestMethod.GET)
-	public String BoardInsert() {
-		String url = "/Board/BoardInsert";
+	@RequestMapping(value = "/insertBoard", method = RequestMethod.GET)
+	public String insertBoard() {
+		String url = "/insert_board";
 		
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardInserted", method = RequestMethod.POST)
-	public String BoardInserted(BoardVO boardVO) {
-		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		board.BoardInsert(boardVO);
-		System.out.println(boardVO.getGoods_id());
+	@RequestMapping(value = "/insertedBoard", method = RequestMethod.POST)
+	public String insertedBoard(BoardVO boardVO) {
+		String url = "redirect:/board/boardList"; // 리다이렉트는 컨트롤러 내 맵핑 주소
+		boardService.insertBoard(boardVO);
+		
 		return url;
 	}
 	
 	/*編集*/
-	@RequestMapping(value = "/Board/BoardUpdate", method = RequestMethod.GET)
-	public String BoardUpdate(BoardVO boardVO,
-							  Model model) {
-		String url = "/Board/BoardUpdate";
+	@RequestMapping(value = "/editboard", method = RequestMethod.GET)
+	public String editBoard(BoardVO boardVO,
+					   Model model) {
+		String url = "/edit_board";
 		
-		boardVO = board.BoardData(boardVO);
+		boardVO = boardService.viewBoard(boardVO);
 		model.addAttribute("boardVO", boardVO);
 		
 		return url;
 	}
 	
-	@RequestMapping(value = "/Board/BoardUpdated", method = RequestMethod.POST)
-	public String BoardUpdated(BoardVO boardVO) {
-		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		board.BoardUpdate(boardVO);//수정시 날짜 갱신 필요
+	@RequestMapping(value = "/editedBoard", method = RequestMethod.POST)
+	public String editedBoard(BoardVO boardVO) {
+		String url = "redirect:/board/boardList"; // BoardList메서드 실행
+		boardService.updateBoard(boardVO);//수정시 날짜 갱신 필요
 		return url;
 	}
 	
 	/*削除*/
-	@RequestMapping(value = "/Board/BoardDelete", method = RequestMethod.GET)
-	public String BoardDelete(BoardVO boardVO) {
-		String url = "redirect:/Board/BoardList"; // BoardList메서드 실행
-		board.BoardDelete(boardVO);
+	@RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
+	public String deleteBoard(BoardVO boardVO) {
+		String url = "redirect:/board/boardList"; // BoardList메서드 실행
+		boardService.deleteBoard(boardVO);
 		return url;
 	}
 	/*검색*/
-	@RequestMapping(value = "/Board/BoardSearch", method = RequestMethod.POST)
-	public String BoardSearch(@RequestParam("keyword")String keyword,
+	@RequestMapping(value = "/board/searchBoard", method = RequestMethod.POST)
+	public String searchBoard(@RequestParam("keyword")String keyword,
 							  Model model) {
-		String url = "/Board/BoardList"; // BoardList메서드 실행
+		String url = "/board_list"; // BoardList메서드 실행
 		
-		List<BoardVO> boardList = board.BoardSearch(keyword);
+		List<BoardVO> boardList = boardService.searchBoard(keyword);
 		model.addAttribute("boardList", boardList);
 		
 		return url;
@@ -127,12 +128,12 @@ public class BoardController {
 	
 	/*중복체크*/
 	@ResponseBody
-	@RequestMapping(value = "/Board/goods_cd_check", method = RequestMethod.POST)
-	public int GoodsNumberCheck(@RequestParam("goods_number")String goods_number) {
+	@RequestMapping(value = "/checkGoodsNumber", method = RequestMethod.POST)
+	public int checkGoodsNumber(@RequestParam("goods_number")String goods_number) {
 		int check = 0;
 		int result = 0;/*jsp에서 ajax를 통해 결과를 알려줄 변수*/
 		
-		check = board.GoodsNumberCheck(goods_number);
+		check = boardService.checkGoodsNumber(goods_number);
 		
 		if(check >= 1) {
 			result = 1;//중복이 검색됨

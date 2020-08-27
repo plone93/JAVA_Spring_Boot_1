@@ -1,4 +1,4 @@
-plugins {
+plugins {//플러그인 설정 : java, war
 	id 'org.springframework.boot' version '2.3.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.training.mstMainte'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '1.8'// 자바 버전
 
 configurations {
 	compileOnly {
@@ -14,11 +14,23 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
+repositories { // 저장소 지정
+	mavenCentral() // Gradle의 메소드   (Maven 중앙 저장소 호출)
+	//jcenter()  // Gradle의 메소드  (JCenter 저장소(공개저장소))
 }
 
-dependencies {
+dependencies {// 라이브러리 지정
+	/*
+	의존성 옵션
+	compile : 컴파일시 사용하는 라이브러리, 컴파일시 참조
+	api : 의존 라이브러리 수정시 본 모듈을 의존하고 있는 모듈도 재빌드 (api 사용가능)
+	implementation : 의존 라이브러리 수정시 본 모듈까지만 재빌드 (api 사용 불가능)
+	compileOnly : 컴파일 시에만 빌드하고 빌드결과물에는 포함하지 않음
+	runtimeOnly : 런타임 시에만 필요한 라이브러리인 경우
+	implementation(구현) 'groupId(그룹):artifactId(이름):버전' //통합
+	implementation group:'junit', name:'junit', version:'4.12' //개별 설정, 위와 뜻은 같음
+	
+	*/
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

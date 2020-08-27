@@ -30,7 +30,7 @@
        		 <label for="code">商品コード</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_number" id="goods_number" th:field="*{goods_number}">
+       		 <input type="text" class="form-control" name="goods_number" id="goodsNumber" th:field="*{goods_number}">
           </div>
         </div>
 
@@ -39,7 +39,7 @@
        		 <label for="ID">商品名前</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_name" id="goods_name" th:field="*{goods_name}" placeholder="">
+       		 <input type="text" class="form-control" name="goods_name" id="goodsName" th:field="*{goods_name}" placeholder="">
           </div>
         </div>
         		
@@ -48,14 +48,14 @@
        		 <label for="ID">商品価格</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_price" id="goods_price" th:field="*{goods_price}" placeholder="">
+       		 <input type="text" class="form-control" name="goods_price" id="goodsPrice" th:field="*{goods_price}" placeholder="">
           </div>
         </div>
 		
 		<div>
 			<button type="submit" class="btn btn-default navbar-btn">修正完了</button>
-			<a class="btn btn-default navbar-btn" th:href="@{BoardDelete(goods_number=*{goods_number})}">削除</a>
-			<a class="btn btn-default navbar-btn" th:href="@{BoardList}">キャンセル</a>
+			<a class="btn btn-default navbar-btn" th:href="@{deleteBoard(goods_number=*{goods_number})}">削除</a>
+			<a class="btn btn-default navbar-btn" th:href="@{boardList}">キャンセル</a>
 		</div>
 	</form>
 	

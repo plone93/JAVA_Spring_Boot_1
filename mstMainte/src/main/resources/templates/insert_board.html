@@ -22,7 +22,7 @@
   <div class="container">
 	<h1>商品作成</h1>
 	
-	<form method="POST" th:action="@{BoardInserted}" name="form" onsubmit="return InsertCheck()">
+	<form method="POST" th:action="@{insertedBoard}" name="form" onsubmit="return InsertCheck()">
 	<!-- th:object 해당 태그내에서 사용할 객체 선언, 태그 안에서 *{}안에 필드명을 입력-->
 		
 		<div class="row my-3 pl-5">
@@ -30,10 +30,10 @@
        		 <label for="code">商品コード</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_number" id="goods_number" placeholder="数字10桁">
+       		 <input type="text" class="form-control" name="goods_number" id="goodsNumber" placeholder="数字10桁">
           </div>
           <div class="col-2">
-       		 <button type="button" class="btn btn-default navbar-btn" value="0" id="goods_number_check">Check</button>
+       		 <button type="button" class="btn btn-default navbar-btn" value="0" id="checkGoodsNumber">Check</button>
           </div>
         </div>
 
@@ -42,7 +42,7 @@
        		 <label for="ID">商品名前</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_name" id="goods_name" placeholder="">
+       		 <input type="text" class="form-control" name="goods_name" id="goodsName" placeholder="">
           </div>
         </div>
         		
@@ -51,7 +51,7 @@
        		 <label for="ID">商品価格</label>
       	  </div>
        	  <div class="col-6">
-       		 <input type="text" class="form-control" name="goods_price" id="goods_price" placeholder="">
+       		 <input type="text" class="form-control" name="goods_price" id="goodsPrice" placeholder="">
           </div>
         </div>
 		
@@ -65,13 +65,13 @@
 			        <option th:value="食品">食品</option>
 			        <option th:value="他">他</option>
 			    </select>
-			    <input type="hidden" value="0" id="goods_id" name="goods_id">
+			    <input type="hidden" value="0" id="goodsId" name="goodsId">
 			</div>
         </div>
         
 		<div>
 			<button type="submit" class="btn btn-default navbar-btn">作成完了</button>
-			<a class="btn btn-default navbar-btn" th:href="@{BoardList}">キャンセル</a>
+			<a class="btn btn-default navbar-btn" th:href="@{boardList}">キャンセル</a>
 		</div>
 	</form>
 	
@@ -80,24 +80,24 @@
   </body>
   
 	<script>
-		 $("#goods_number_check").click(function(){ //id가 idCheck인것이 클릭 되면
-			 var goods_number = $('#goods_number').val();
+		 $("#checkGoodsNumber").click(function(){ //id가 idCheck인것이 클릭 되면
+			 var goodsNumber = $('#goodsNumber').val();
 		 	 var valueCheck = /^[0-9]{10}$/; 
 		 	 
-		 	if(!valueCheck.test(goods_number)){
+		 	if(!valueCheck.test(goodsNumber)){
 		 		alert("数字10桁だけ可能です");
 		 	} else {
 			 $.ajax({
-				 url:"goods_cd_check",
+				 url:"checkGoodsNumber",
 				 type:"post",	 
-				 data: {goods_number:goods_number},
+				 data: {goods_number:goodsNumber},
 				 dataType:"json",
 				 success:function(data){
 					 if(data == 0){  // data : 반환타입 ,  data.message : model이나 request로 보낸값
-						 $('#goods_number_check').val('1');
+						 $('#checkGoodsNumber').val('1');
 					     alert("使用可能です");	
 					 } else {
-						 $('#goods_number_check').val('0');
+						 $('#checkGoodsNumber').val('0');
 						 alert("既に使用されています");
 					 }
 				 },
@@ -114,30 +114,30 @@
 		<!-- 회원가입 체크 -->
 	<script>
 		function InsertCheck() {
-			if(document.form.goods_number.value=="") {
+			if(document.form.goodsNumber.value=="") {
 				alert("商品コ―ドを入力してください");
-				form.goods_number.focus();
+				form.goodsNumber.focus();
 				return false;
 			}
-			if(document.form.goods_name.value=="") {
+			if(document.form.goodsName.value=="") {
 				alert("商品名を入力してください");
-				form.goods_name.focus();
+				form.goodsName.focus();
 				return false;
 			}
 			
-			if(document.form.goods_price.value=="") {
+			if(document.form.goodsPrice.value=="") {
 				alert("商品の価格を入力してください");
-				form.goods_price.focus();
+				form.goodsPrice.focus();
 				return false;
 			}
-			if(document.form.id.goods_number.length<10 && document.form.id.goods_number.length >= 11) {
+			if(document.form.id.goodsNumber.length<10 && document.form.id.goodsNumber.length >= 11) {
 				alert("商品コ―ドは数字10桁です");
 				form.goodsNumber.focus();
 				return false;
 			}
-			if(form.goods_number_check.value==0) {
+			if(form.checkGoodsNumber.value==0) {
 				alert("IDチェックをしてください。");
-				form.goods_number_check.focus;
+				form.checkGoodsNumber.focus();
 				return false;
 			}
 			
@@ -154,7 +154,7 @@
 
 	
 	function selected(e){
-	$('#goods_id').val(e.value); //hidden input태그에 값 넣기
+	$('#goodsId').val(e.value); //hidden input태그에 값 넣기
 	}
 
 	</script>
